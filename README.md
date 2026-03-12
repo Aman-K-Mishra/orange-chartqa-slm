@@ -25,19 +25,23 @@ Image: bar chart
 Query: "What is the highest value?"
 Answer: "45"
 
+Data exploration and preprocessing are performed in:
+```
+notebooks/01_data_exploration_preprocessing.ipynb
+```
+
+This notebook loads the dataset, visualizes chart examples, and prepares the image-text inputs for model training.
+
 ---
 
 ## Model
 
-Base model: `[MODEL_NAME]`
+Base model: Qwen2-VL-2B-Instruct
 
-Example options:
-
-* SmolVLM
-* LLaVA
-* Phi-3 Vision
-
-The model is selected to ensure it can run on **T4 GPU compute**.
+This model was selected because it:
+- supports multimodal (image + text) inputs
+- is small enough to run on a T4 GPU
+- works well with LoRA fine-tuning
 
 ---
 
@@ -46,7 +50,7 @@ The model is selected to ensure it can run on **T4 GPU compute**.
 Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/orange-chartqa-slm.git
+git clone https://github.com/Aman-K-Mishra/orange-chartqa-slm
 cd orange-chartqa-slm
 ```
 
@@ -79,7 +83,7 @@ configs/training_config.yaml
 Trained model or LoRA adapters:
 
 ```
-https://huggingface.co/YOUR_USERNAME/YOUR_MODEL
+https://huggingface.co/YOUR_USERNAME/chartqa-qwen2vl-lora
 ```
 
 ---
@@ -118,11 +122,21 @@ print(processor.decode(output[0]))
 
 ```
 README.md
+requirements.txt
+
 train.py
 inference.py
-requirements.txt
-configs/training_config.yaml
-docs/decisions.md
+
+notebooks/
+  01_data_exploration_preprocessing.ipynb
+  02_training.ipynb
+  03_evaluation.ipynb
+
+configs/
+  training_config.yaml
+
+docs/
+  decisions.md
 ```
 
 ---
@@ -138,10 +152,10 @@ Possible platforms:
 
 ---
 
-## Author
+## Authors
 
-Aman Mishra
+- Aman Kumar Mishra
 
-Aaron Thomas Mathew
+- Aaron Thomas Mathew
 
-Preetham VJ
+- Preetham VJ
